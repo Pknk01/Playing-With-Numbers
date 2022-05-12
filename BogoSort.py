@@ -1,73 +1,46 @@
-from random import shuffle
+# Bogosort: Randomizes array, checks if sorted, repeats if not
+# O = (n-1)n!
+
 import time
-import matplotlib.pylab as LAB
-import matplotlib.pyplot as PYPLT
+from random import shuffle
+import matplotlib.pylab as pylab
+import Utilities as Utilities
 
-#Summary: Bogosort Randomizes array, checks if sorted, repeats if not. O = (n-1)n!
+# ---- Variables ----
 
-ETStart = time.process_time() #stores start time to calculate total elapsed time
+#Takes File Path to .txt file from Utilities script
+RawFilePath = Utilities.RawValPath          
+SortedfilePath = Utilities.SortedValPath    
 
-# --- Vars ---
+valuearray = 0  #empty declaration
+Arraywrites = 0
+elapsedtime = 0
 
-Rawfilepath = "/Users/victor/Desktop/Coding Projects/Sorting Algorythims /Values.txt"
-Sortedfilepath = "/Users/victor/Desktop/Coding Projects/Sorting Algorythims /SortedValues.txt"
+#Y/N prompt, saves bool as true if answer = Y (not case sensitive)
+visualize = bool(str(input("\nDo you wish to visualize the sort? \n Y/N \n")).upper() == "Y")
 
-values = 0          #Value Array
-arraywrites = 0     #number of writes to array
-comparisons = 0
-visualize = True
+# --- Graph ---
+pylab.gcf().canvas.manager.set_window_title("Bogosort Visualizer") #Sets title of graph window
 
-# --- Visualizer ---
+# --- Sorting loop ---
 
-LAB.gcf().canvas.manager.set_window_title("Bogosort Visualizer")  #Sets title of window
+with open(RawFilePath, 'r') as File:
 
-# --- Sorting Loop ---
+    StartTime = time.process_time() #Stores starting time value to get total time in the end of sort
+    valuearray = [int(i) for i in File.readlines()]
 
-def isSorted(array):
+    while (not Utilities.isSorted(valuearray)):
 
-    curr_index = 0
-    prev_index = 0
-    global comparisons
-
-    while (curr_index < len(array)):
-
-        if (array[curr_index] < array[prev_index]):
-            comparisons += curr_index
-            return False
-
-        prev_index = curr_index
-        curr_index += 1
-
-    comparisons += curr_index #adds all comparisons
-    return True
-
-with open(Rawfilepath, 'r') as file:
-
-    values = [int(i) for i in file.readlines()] #Stores value array from file
-
-    while (not isSorted(values)):
-
-        shuffle(values)     #Bogosort Implementation (lol)
-        arraywrites += 1
-        ETEnd = time.process_time()
-        ExecutionTime = ETEnd-ETStart
-
-        if(visualize):
-            PYPLT.suptitle("Comparisons = {} | Shuffles = {} \nProcess Time = {}s".format(comparisons, arraywrites, round(ExecutionTime, 4))) #Info Text
-            PYPLT.cla()
-            PYPLT.plot(values, range(0, len(values)))     #refreshes graph with second interval
-            PYPLT.plot(values, range(0, len(values)), 'ro')
-            PYPLT.pause(0.001)
-
+        shuffle(valuearray) #Bogosort Implementation lol
+        Arraywrites += 1         #adds to shuffle count
+        elapsedtime = time.process_time() - StartTime
+        
+        Utilities.PlotOrLog(visualize, valuearray, elapsedtime, Arraywrites)
 
 # --- Outputs ---
 
-#Stores sorted values in file
-with open(Sortedfilepath, 'w') as file:
-    file.writelines(["{}\n".format(val) for val in values])
+#Stores values in file
+with open(SortedfilePath, 'w') as File:
+    File.writelines([f"{i}\n" for i in valuearray])
 
-
-if(visualize):
-    PYPLT.waitforbuttonpress()
-
-print("\n Excecution Time = {} \Shuffles: {}\n Comparisons: {}".format(ExecutionTime, arraywrites, comparisons))
+print(f"\n Elapsed Time = {round(elapsedtime, 5)}s \n Writes = {Arraywrites} \n Comparisons = {Utilities.comparisons} \n ")
