@@ -9,10 +9,6 @@ SortedValPath = str(pathlib.Path(__file__).parent.resolve()) + "/Values/SortedVa
 
 comparisons = 0
 
-#class SortReturn():
- #   comparisons = 0
-  #  isSorted = False
-
 # Re-useable function meant to be run in main while sorting loop
 # Opening graph slows down efficiency, logging is faster, but not visual
 def PlotOrLog(plot, array, elapsedtime, writes):
