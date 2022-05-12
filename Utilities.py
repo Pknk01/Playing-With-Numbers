@@ -1,4 +1,3 @@
-from doctest import COMPARISON_FLAGS
 import matplotlib.pyplot as PLT
 import pathlib
 
@@ -14,12 +13,12 @@ comparisons = 0
 def PlotOrLog(plot, array, elapsedtime, writes):
 
     if(plot):
-        PLT.suptitle(f"Comparisons: {comparisons} | Writes = {writes} \n Elapsed Time = {elapsedtime}s")
+        PLT.suptitle(f"Comparisons: {comparisons} | Writes = {writes} \n Elapsed Time = {round(elapsedtime, 5)}s")
         PLT.cla() #Clears current drawing in graph
     
         PLT.plot(array, 'ro')    #Draws red dots over values
         PLT.plot(array)          #Draws line joining values
-        PLT.pause(0.01)          #refreshes graph with timed interval (seconds)
+        PLT.pause(0.001)          #refreshes graph with timed interval (seconds)
     else:
         print(f"Comparisons: {comparisons} | Writes = {writes} | Elapsed Time = {round(elapsedtime, 5)}s")
 

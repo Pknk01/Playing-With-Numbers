@@ -3,12 +3,12 @@ import Utilities as utilities
 
 file_path = utilities.RawValPath  #Value Filepath
 
-minval = 0
-maxval = 10
+minval = 1
+maxval = 5
 
-with open(file_path, 'w+') as file:
+with open(file_path, 'w') as file:
 
-    val = range(minval, maxval)
+    val = list(range(minval, maxval + 1))
     shuffle(val)
 
     file.writelines(["{}\n".format(i) for i in val])
