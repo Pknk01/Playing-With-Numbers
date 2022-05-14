@@ -4,7 +4,7 @@ import Utilities as utilities
 file_path = utilities.RawValPath  #Value Filepath
 
 minval = 1
-maxval = 5
+maxval = 10
 
 with open(file_path, 'w') as file:
 

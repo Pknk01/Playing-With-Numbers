@@ -32,8 +32,8 @@ with open(RawFilePath, 'r') as File:
 
     while (not Utilities.isSorted(valuearray)):
 
-        shuffle(valuearray) #Bogosort Implementation lol
-        Arraywrites += 1         #adds to shuffle count
+        shuffle(valuearray)     #Bogosort Implementation lol
+        Arraywrites += 1        #adds to shuffle count
         elapsedtime = time.process_time() - StartTime
         
         Utilities.PlotOrLog(visualize, valuearray, elapsedtime, Arraywrites)
