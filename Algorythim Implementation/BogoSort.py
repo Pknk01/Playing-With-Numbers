@@ -36,7 +36,7 @@ with open(RawFilePath, 'r') as File:
         Arraywrites += 1        #adds to shuffle count
         elapsedtime = time.process_time() - StartTime
         
-        Utilities.PlotOrLog(visualize, valuearray, elapsedtime, Arraywrites)
+        Utilities.PlotOrLogSort(visualize, valuearray, elapsedtime, Arraywrites)
 
 # --- Outputs ---
 

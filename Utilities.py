@@ -10,7 +10,7 @@ comparisons = 0
 
 # Re-useable function meant to be run in main while sorting loop
 # Opening graph slows down efficiency, logging is faster, but not visual
-def PlotOrLog(plot, array, elapsedtime, writes):
+def PlotOrLogSort(plot, array, elapsedtime, writes):
 
     if(plot):
         PLT.suptitle(f"Comparisons: {comparisons} | Writes = {writes} \n Elapsed Time = {round(elapsedtime, 5)}s")
