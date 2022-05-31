@@ -1,6 +1,6 @@
 # Playing-With-Numbers
-Repository for several Algorithm Implementations.
-This repostory Will be updated occasionally whenever i finish a new algorythim.
+Repository for several algorithm implementations.
+This repostory will be updated occasionally with new implementations.
 
 Currently Implemented:
 - 3x+1
