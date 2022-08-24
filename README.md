@@ -1,8 +1,7 @@
 # Playing-With-Numbers
-Repository for  Algorithm Implementations
+Repository for several algorithm implementations.
+This repostory will be updated occasionally with new implementations.
 
-
-To-do:
-1. Quicksort
-2. Insertion Sort
-3. Bubble Sort
+Currently Implemented:
+- 3x+1
+- Bogosort
