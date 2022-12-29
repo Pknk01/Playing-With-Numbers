@@ -49,7 +49,7 @@ def ThreeXPlusOne(input):
 
 # --- Main while loop ---
 
-while (Iterations != 1):
+while (Iterations >= 1):
     
     ThreeXPlusOne(Iterations)       #Runs algorythm unitll reaching 1 for Input number
 
